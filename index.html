@@ -1,0 +1,50 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="days_of_life.css">
+<link rel="stylesheet" href="fontawesome.min.css">
+<script src="./p5.min.js">
+
+</script>
+
+<title>Countdown</title>
+</head>
+
+<body>
+  <h1 class="title">Days in Life</h1>
+<div>
+  <form class="registration" id="registration" class="form-input">
+    <div class="row">
+      <p class="birthday">Date (dd/mm/yyyy)</p>
+    </div>
+    <div class="row">
+      <input id="datePicker" type="date" class="datePicker" value=""/>
+		</div>
+    <div class="row">
+        <div class="col">
+          <input type="number" oninput="maxLengthCheck(this)" maxlength="2" class="hours" value="" id="hours" min="0" max="24"/>:
+          <input type="number" oninput="maxLengthCheck(this)" maxlength="2" class="minutes" id="minutes" min="0" max="60"/>
+        </div>
+    </div>
+    <div class="row">
+      <div class="select-wrapper">
+        <select id="format" >
+          <option>Milliseconds</option>
+          <option>Seconds</option>
+          <option>Minutes</option>
+          <option>Hours</option>
+          <option selected="selected">Days</option>
+          <option>Weeks</option>
+        </select>
+      </div>
+    </div>
+
+  </form>
+
+  <h3 id="daysOutput">You have 0 days left</h3>
+  <script src="days_of_life.js"></script>
+</div>
+
+</body>
+</html>
