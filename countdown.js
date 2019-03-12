@@ -1,4 +1,5 @@
 var timeHTML;
+var isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
 Object.prototype.equals = function(b) {
     var a = this;
     for(i in a) {
