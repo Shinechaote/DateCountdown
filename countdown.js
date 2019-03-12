@@ -96,7 +96,8 @@ function draw(){
       countdown_date = new Date(countdown_date_arr[2],countdown_date_arr[1]-1,countdown_date_arr[0]).getTime()+ hours*3600*1000 + minutes*60*1000;
     }
     else{
-      countdown_date = document.getElementById('datePicker').valueAsDate.getTime()+ hours*3600*1000 + minutes*60*1000;
+      var d = new Date();
+      countdown_date = document.getElementById('datePicker').valueAsDate.getTime() + (hours- Math.trunc(-(d.getTimezoneOffset())/60))*3600*1000 + minutes*60*1000;
     }
 
 		var current_date = new Date().getTime();
