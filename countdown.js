@@ -35,7 +35,16 @@ function maxLengthCheck(object)
       object.value = object.value.slice(0, object.maxLength)
   }
 function setup(){
-	document.getElementById('datePicker').valueAsDate = new Date();
+  if(isSafari){
+    var date = new Date().getDate().toString();
+    var month = new Date().getMonth().toString();
+    var year = (new Date().getYear() + 1900).toString();
+    document.getElementById('datePicker').type = "text";
+    document.getElementById('datePicker').value = date + "." + month + "." + year;
+  }
+  else{
+    document.getElementById('datePicker').valueAsDate = new Date();
+  }
   document.getElementById('hours').value = new Date().getHours();
   document.getElementById("minutes").value = new Date().getMinutes();
 	frameRate(60);
@@ -80,8 +89,15 @@ function draw(){
 				break;
 
 		}
+    var countdown_date = 0;
+    if(isSafari){
+      var countdown_date_arr = document.getElementById('datePicker').value.split(".");
+      countdown_date = new Date(date_of_birth_arr[2],date_of_birth_arr[1],date_of_birth_arr[0]).getTime();
+    }
+    else{
+      countdown_date = document.getElementById('datePicker').valueAsDate.getTime()+ hours*3600*1000 + minutes*60*1000;
+    }
 
-		var countdown_date = document.getElementById('datePicker').valueAsDate.getTime()+ hours*3600*1000 + minutes*60*1000;
 		var current_date = new Date().getTime();
 		var date_difference = countdown_date - current_date - 1000*60*60;
 
